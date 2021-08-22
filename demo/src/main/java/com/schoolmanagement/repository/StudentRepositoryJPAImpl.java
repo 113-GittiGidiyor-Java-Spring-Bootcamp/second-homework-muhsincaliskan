@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
 public class StudentRepositoryJPAImpl implements CrudRepository<Student>{
@@ -26,6 +27,7 @@ public class StudentRepositoryJPAImpl implements CrudRepository<Student>{
     }
 
     @Override
+    @Transactional
     public Student saveToDatabase(Student object) {
         return entityManager.merge(object);
     }
@@ -40,7 +42,8 @@ public class StudentRepositoryJPAImpl implements CrudRepository<Student>{
     }
 
     @Override
-    public void updateOnDatabase(Student object, int id) {
-
+    @Transactional
+    public Student updateOnDatabase(Student object, int id) {
+        return entityManager.merge(object);
     }
 }

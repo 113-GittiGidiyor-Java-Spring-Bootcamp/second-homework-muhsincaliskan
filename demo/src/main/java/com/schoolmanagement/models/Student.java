@@ -1,6 +1,7 @@
 package com.schoolmanagement.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -14,8 +15,8 @@ public class Student {
     private String address;
     private String gender;
     private Date birthDate;
-    @ManyToMany(mappedBy = "students")
-    private List<Course> courseList;
+    @ManyToMany(mappedBy = "studentList")
+    private List<Course> courseList=new ArrayList<>();
     public Student() {
     }
 

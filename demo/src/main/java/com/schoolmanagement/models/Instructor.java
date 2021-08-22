@@ -1,6 +1,7 @@
 package com.schoolmanagement.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,8 +14,8 @@ public class Instructor {
     private String name;
     private String address;
     private Number phoneNumber;
-    @OneToMany()
-    private List<Course> courseList;
+    @OneToMany(mappedBy = "instructor")
+    private List<Course> courseList=new ArrayList<>();
     public Instructor() {}
 
     public Instructor(String name, String address, Number phoneNumber) {

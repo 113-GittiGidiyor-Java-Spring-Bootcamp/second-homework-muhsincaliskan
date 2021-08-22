@@ -43,8 +43,8 @@ public class CourseRepositoryRepositoryJPAImpl implements CrudRepository<Course>
 
     @Override
     @Transactional
-    public void updateOnDatabase(Course object, int id) {
+    public Course updateOnDatabase(Course object, int id) {
 
-        entityManager.merge(object);
+        return entityManager.merge(object);
     }
 }
